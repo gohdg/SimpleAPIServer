@@ -57,19 +57,13 @@ module.exports = {
   apps: [
     {
       name: "SimpleAPIServer",
-      script: "uvicorn",
+      script: "./venv/bin/uvicorn",
       args: "main:app --host 0.0.0.0 --port 8000",
-      interpreter: "./venv/bin/python", // 가상환경 Python 경로
-      watch: false,
-      env: {
-        ENV: "development"
-      },
-      env_production: {
-        ENV: "production"
-      }
-    }
-  ]
-}
+      interpreter: "none",
+    },
+  ],
+};
+
 ```
 
 #### 실행
@@ -78,13 +72,6 @@ module.exports = {
 pm2 start ecosystem.config.js
 ```
 
----
-
-### ✅ 방법 2: 커맨드라인에서 직접 실행 (Direct command)
-
-```bash
-pm2 start "uvicorn main:app --host 0.0.0.0 --port 8000"   --name SimpleAPIServer   --interpreter ./venv/bin/python
-```
 
 ---
 
